@@ -1,0 +1,13 @@
+*.class
+build/*
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+!dist/lib/RXTXcomm.jar
+
+# Other files
+*.bak
+*.orig
