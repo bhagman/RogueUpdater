@@ -296,7 +296,7 @@ public class RogueUpdaterUI extends javax.swing.JFrame
     labelLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
     labelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rogueupdater/resources/RogueLogo.png"))); // NOI18N
 
-    labelTitle.setFont(labelTitle.getFont().deriveFont((labelTitle.getFont().getStyle() | java.awt.Font.ITALIC) | java.awt.Font.BOLD, labelTitle.getFont().getSize() + 7));
+    labelTitle.setFont(labelTitle.getFont().deriveFont((labelTitle.getFont().getStyle() | java.awt.Font.ITALIC) | java.awt.Font.BOLD, labelTitle.getFont().getSize()+7));
     labelTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
     labelTitle.setText("Firmware Update Tool");
     labelTitle.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -309,58 +309,58 @@ public class RogueUpdaterUI extends javax.swing.JFrame
     layout.setHorizontalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                          .addComponent(labelLogo, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
-                          .addComponent(progressBar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
-                          .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(LabelFile)
-                                        .addComponent(labelSerialPort))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addComponent(buttonUpload)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
-                                            .addComponent(buttonExit))
-                                        .addComponent(comboSerialPort, javax.swing.GroupLayout.Alignment.TRAILING, 0, 179, Short.MAX_VALUE)
-                                        .addComponent(textFile, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(buttonBrowse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(buttonRefresh))))
-                .addContainerGap())
+        .addContainerGap()
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+          .addComponent(labelLogo, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
+          .addComponent(progressBar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
+          .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+              .addComponent(LabelFile)
+              .addComponent(labelSerialPort))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+              .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(buttonUpload)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addComponent(buttonExit))
+              .addComponent(comboSerialPort, javax.swing.GroupLayout.Alignment.TRAILING, 0, 179, Short.MAX_VALUE)
+              .addComponent(textFile, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+              .addComponent(buttonBrowse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+              .addComponent(buttonRefresh))))
+        .addContainerGap())
       .addComponent(labelTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(150, 150, 150)
-                .addComponent(labelVersion, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
-                .addGap(150, 150, 150))
+        .addGap(150, 150, 150)
+        .addComponent(labelVersion, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+        .addGap(150, 150, 150))
     );
     layout.setVerticalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(labelLogo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(labelTitle)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                          .addComponent(textFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                          .addComponent(buttonBrowse)
-                          .addComponent(LabelFile))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                          .addComponent(comboSerialPort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                          .addComponent(buttonRefresh)
-                          .addComponent(labelSerialPort))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                          .addComponent(buttonExit)
-                          .addComponent(buttonUpload))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(labelVersion))
+        .addContainerGap()
+        .addComponent(labelLogo)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addComponent(labelTitle)
+        .addGap(18, 18, 18)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+          .addComponent(textFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(buttonBrowse)
+          .addComponent(LabelFile))
+        .addGap(18, 18, 18)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+          .addComponent(comboSerialPort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(buttonRefresh)
+          .addComponent(labelSerialPort))
+        .addGap(18, 18, 18)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+          .addComponent(buttonExit)
+          .addComponent(buttonUpload))
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        .addComponent(labelVersion))
     );
 
     pack();
@@ -368,14 +368,14 @@ public class RogueUpdaterUI extends javax.swing.JFrame
 
   private void buttonExitActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_buttonExitActionPerformed
   {
-    //GEN-HEADEREND:event_buttonExitActionPerformed
+//GEN-HEADEREND:event_buttonExitActionPerformed
     closeSerialPort();
     System.exit(0);
   }//GEN-LAST:event_buttonExitActionPerformed
 
   private void buttonBrowseActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_buttonBrowseActionPerformed
   {
-    //GEN-HEADEREND:event_buttonBrowseActionPerformed
+//GEN-HEADEREND:event_buttonBrowseActionPerformed
     int returnVal = chooser.showOpenDialog(RogueUpdaterUI.this);
 
     if (returnVal == JFileChooser.APPROVE_OPTION)
@@ -401,7 +401,7 @@ public class RogueUpdaterUI extends javax.swing.JFrame
 
   private void buttonUploadActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_buttonUploadActionPerformed
   {
-    //GEN-HEADEREND:event_buttonUploadActionPerformed
+//GEN-HEADEREND:event_buttonUploadActionPerformed
     // Button pressed, load data from file, turn off buttons, then start uploader thread.
     // Threaded method updates Progress bar, then turns buttons on after upload completed.
 
@@ -490,7 +490,7 @@ public class RogueUpdaterUI extends javax.swing.JFrame
 
   private void buttonRefreshActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_buttonRefreshActionPerformed
   {
-    //GEN-HEADEREND:event_buttonRefreshActionPerformed
+//GEN-HEADEREND:event_buttonRefreshActionPerformed
     try
     {
       populateComboSerial();
@@ -590,7 +590,7 @@ public class RogueUpdaterUI extends javax.swing.JFrame
 
   private void formWindowOpened(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowOpened
   {
-    //GEN-HEADEREND:event_formWindowOpened
+//GEN-HEADEREND:event_formWindowOpened
     System.out.println("Started!");
 
     // Maybe one day... we can load in our library on our own.
@@ -646,7 +646,7 @@ public class RogueUpdaterUI extends javax.swing.JFrame
 
   private void textFileMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_textFileMouseClicked
   {
-    //GEN-HEADEREND:event_textFileMouseClicked
+//GEN-HEADEREND:event_textFileMouseClicked
     if (buttonBrowse.isEnabled())
     {
       buttonBrowseActionPerformed(null);
@@ -791,7 +791,9 @@ public class RogueUpdaterUI extends javax.swing.JFrame
     {
       public void run()
       {
-        new RogueUpdaterUI().setVisible(true);
+        RogueUpdaterUI RUUI = new RogueUpdaterUI();
+        RUUI.setLocationRelativeTo(null);
+        RUUI.setVisible(true);
       }
     });
   }
