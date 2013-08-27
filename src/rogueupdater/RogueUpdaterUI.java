@@ -1,11 +1,11 @@
 /*
  * RogueUpdater
- * 
+ *
  * Firmware updater tool for Rogue Robotics products.
  * http://www.roguerobotics.com/
- * 
+ *
  * Written by Brett Hagman
- * 
+ *
  */
 package rogueupdater;
 
@@ -32,7 +32,7 @@ import java.util.List;
  * @author Brett Hagman
  */
 public class RogueUpdaterUI extends javax.swing.JFrame
-                            implements PropertyChangeListener
+  implements PropertyChangeListener
 {
   private JFileChooser chooser;
   private byte fwData[];
@@ -62,9 +62,9 @@ public class RogueUpdaterUI extends javax.swing.JFrame
         if (frameSize > 512)
         {
           errorMessage(
-                  "This is not a valid Rogue Firmware update file.",
-                  "Firmware File Invalid",
-                  null);
+            "This is not a valid Rogue Firmware update file.",
+            "Firmware File Invalid",
+            null);
           return false;
         }
 
@@ -102,9 +102,9 @@ public class RogueUpdaterUI extends javax.swing.JFrame
             if (timeout++ >= 150)
             {
               errorMessage(
-                      "Timeout waiting for response. Update failed.",
-                      "Update Error",
-                      null);
+                "Timeout waiting for response. Update failed.",
+                "Update Error",
+                null);
               return false;
             }
           }
@@ -145,7 +145,7 @@ public class RogueUpdaterUI extends javax.swing.JFrame
           return false;
         }
       }
-      
+
       setProgress(100);
       return true;
     }
@@ -156,36 +156,36 @@ public class RogueUpdaterUI extends javax.swing.JFrame
     @Override
     public void done()
     {
-        closeSerialPort();
-        buttonBrowse.setEnabled(true);
-        buttonUpload.setEnabled(true);
-        buttonRefresh.setEnabled(true);
-        comboSerialPort.setEnabled(true);
-        try
+      closeSerialPort();
+      buttonBrowse.setEnabled(true);
+      buttonUpload.setEnabled(true);
+      buttonRefresh.setEnabled(true);
+      comboSerialPort.setEnabled(true);
+      try
+      {
+        // Check the result from the background process.
+        // This isn't necessary for setIndeterminate(), but just in case
+        // we want to do something else in the future.
+        if (get() == false)
         {
-          // Check the result from the background process.
-          // This isn't necessary for setIndeterminate(), but just in case
-          // we want to do something else in the future.
-          if (get() == false)
-          {
-            progressBar.setIndeterminate(false);
-          }
+          progressBar.setIndeterminate(false);
         }
-        catch (Exception ignore)
-        {
-        }
+      }
+      catch (Exception ignore)
+      {
+      }
     }
 
   } // UploadTask class
-  
-  
+
+
   /**
    * Creates new form RogueUpdaterUI
    */
   public RogueUpdaterUI()
   {
     initComponents();
-    
+
     List<Image> icons = new ArrayList<Image>();
     icons.add(new ImageIcon(getClass().getResource("resources/Rogue128.png")).getImage());
     icons.add(new ImageIcon(getClass().getResource("resources/Rogue64.png")).getImage());
@@ -193,11 +193,11 @@ public class RogueUpdaterUI extends javax.swing.JFrame
     icons.add(new ImageIcon(getClass().getResource("resources/Rogue32.png")).getImage());
     icons.add(new ImageIcon(getClass().getResource("resources/Rogue16.png")).getImage());
     setIconImages(icons);
-    
+
     // Start in the current folder.
     chooser = new JFileChooser(".");
     FileNameExtensionFilter filter = new FileNameExtensionFilter(
-            "Rogue Firmware Files (*.rfw)", "rfw");
+      "Rogue Firmware Files (*.rfw)", "rfw");
     chooser.setFileFilter(filter);
   }
 
@@ -296,7 +296,7 @@ public class RogueUpdaterUI extends javax.swing.JFrame
     labelLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
     labelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rogueupdater/resources/RogueLogo.png"))); // NOI18N
 
-    labelTitle.setFont(labelTitle.getFont().deriveFont((labelTitle.getFont().getStyle() | java.awt.Font.ITALIC) | java.awt.Font.BOLD, labelTitle.getFont().getSize()+7));
+    labelTitle.setFont(labelTitle.getFont().deriveFont((labelTitle.getFont().getStyle() | java.awt.Font.ITALIC) | java.awt.Font.BOLD, labelTitle.getFont().getSize() + 7));
     labelTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
     labelTitle.setText("Firmware Update Tool");
     labelTitle.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -309,338 +309,344 @@ public class RogueUpdaterUI extends javax.swing.JFrame
     layout.setHorizontalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(layout.createSequentialGroup()
-        .addContainerGap()
-        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-          .addComponent(labelLogo, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
-          .addComponent(progressBar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
-          .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-              .addComponent(LabelFile)
-              .addComponent(labelSerialPort))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-              .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(buttonUpload)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
-                .addComponent(buttonExit))
-              .addComponent(comboSerialPort, javax.swing.GroupLayout.Alignment.TRAILING, 0, 179, Short.MAX_VALUE)
-              .addComponent(textFile, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-              .addComponent(buttonBrowse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-              .addComponent(buttonRefresh))))
-        .addContainerGap())
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                          .addComponent(labelLogo, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
+                          .addComponent(progressBar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
+                          .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(LabelFile)
+                                        .addComponent(labelSerialPort))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addComponent(buttonUpload)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                                            .addComponent(buttonExit))
+                                        .addComponent(comboSerialPort, javax.swing.GroupLayout.Alignment.TRAILING, 0, 179, Short.MAX_VALUE)
+                                        .addComponent(textFile, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(buttonBrowse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(buttonRefresh))))
+                .addContainerGap())
       .addComponent(labelTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-        .addGap(150, 150, 150)
-        .addComponent(labelVersion, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
-        .addGap(150, 150, 150))
+                .addGap(150, 150, 150)
+                .addComponent(labelVersion, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+                .addGap(150, 150, 150))
     );
     layout.setVerticalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-        .addContainerGap()
-        .addComponent(labelLogo)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        .addComponent(labelTitle)
-        .addGap(18, 18, 18)
-        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-          .addComponent(textFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(buttonBrowse)
-          .addComponent(LabelFile))
-        .addGap(18, 18, 18)
-        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-          .addComponent(comboSerialPort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(buttonRefresh)
-          .addComponent(labelSerialPort))
-        .addGap(18, 18, 18)
-        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-          .addComponent(buttonExit)
-          .addComponent(buttonUpload))
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addComponent(labelVersion))
+                .addContainerGap()
+                .addComponent(labelLogo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelTitle)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                          .addComponent(textFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                          .addComponent(buttonBrowse)
+                          .addComponent(LabelFile))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                          .addComponent(comboSerialPort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                          .addComponent(buttonRefresh)
+                          .addComponent(labelSerialPort))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                          .addComponent(buttonExit)
+                          .addComponent(buttonUpload))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelVersion))
     );
 
     pack();
   }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonExitActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_buttonExitActionPerformed
-    {//GEN-HEADEREND:event_buttonExitActionPerformed
-      closeSerialPort();
-      System.exit(0);
-    }//GEN-LAST:event_buttonExitActionPerformed
+  private void buttonExitActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_buttonExitActionPerformed
+  {
+    //GEN-HEADEREND:event_buttonExitActionPerformed
+    closeSerialPort();
+    System.exit(0);
+  }//GEN-LAST:event_buttonExitActionPerformed
 
-    private void buttonBrowseActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_buttonBrowseActionPerformed
-    {//GEN-HEADEREND:event_buttonBrowseActionPerformed
-      int returnVal = chooser.showOpenDialog(RogueUpdaterUI.this);
+  private void buttonBrowseActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_buttonBrowseActionPerformed
+  {
+    //GEN-HEADEREND:event_buttonBrowseActionPerformed
+    int returnVal = chooser.showOpenDialog(RogueUpdaterUI.this);
 
-      if (returnVal == JFileChooser.APPROVE_OPTION)
-      {
-        firmwareFile = chooser.getSelectedFile();
-        textFile.setText(firmwareFile.getName());
-
-        textFile.setToolTipText(firmwareFile.getParent());
-
-        System.out.println("You chose to open this file: "
-                           + firmwareFile.toString());
-        if (firmwareFile.length() > 200000)
-        {
-          errorMessage("This file is likely not a Rogue Robotics firmware update file.",
-                       "Invalid File",
-                       null);
-          firmwareFile = null;
-          textFile.setText("");
-          textFile.setToolTipText("");
-        }
-      }
-    }//GEN-LAST:event_buttonBrowseActionPerformed
-
-    private void buttonUploadActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_buttonUploadActionPerformed
-    {//GEN-HEADEREND:event_buttonUploadActionPerformed
-      // Button pressed, load data from file, turn off buttons, then start uploader thread.
-      // Threaded method updates Progress bar, then turns buttons on after upload completed.
-
-      FileReader fr;
-      char data[];
-
-      buttonUpload.setEnabled(false);
-      progressBar.setValue(0);
-      
-      if (firmwareFile == null)
-      {
-        errorMessage("Please select a firmware file.",
-                     "No firmware file selected",
-                     null);
-        buttonUpload.setEnabled(true);
-        return;
-      }
-
-      try
-      {
-        fr = new FileReader(firmwareFile);
-        data = new char[(int) firmwareFile.length()];
-
-        int charsRead = fr.read(data);
-
-        fr.close();
-
-        System.out.print("bytes read: ");
-        System.out.println(charsRead);
-      }
-      catch (IOException ex)
-      {
-        errorMessage("An error occurred while opening the file",
-                     "File Open Error",
-                     ex);
-        buttonUpload.setEnabled(true);
-        return;
-      }
-
-      fwData = new byte[data.length / 2];
-
-      // convert to binary
-      for (int i = 0; i < data.length; i += 2)
-      {
-        fwData[i / 2] = (byte) ((Character.digit(data[i], 16) << 4)
-                                + Character.digit(data[i + 1], 16));
-      }
-
-      // got the data, let's upload
-      // need to make sure serial port is ready
-      // open the port now, send data, then close the port when done
-
-      // open the port
-      if (!openSerialPort())
-      {
-        buttonUpload.setEnabled(true);
-        return;
-      }
-
-      // We are good to upload now. Start the background task.
-      
-      progressBar.setIndeterminate(true);
-      buttonBrowse.setEnabled(false);
-      buttonRefresh.setEnabled(false);
-      comboSerialPort.setEnabled(false);
-      //Instances of javax.swing.SwingWorker are not reusuable, so
-      //we create new instances as needed.
-      uploadTask = new UploadTask();
-      uploadTask.addPropertyChangeListener(this);
-      uploadTask.execute();
-    }//GEN-LAST:event_buttonUploadActionPerformed
-
-    /**
-     * Invoked when our task's 'progress' property changes.
-     * 'progress' property is inherited from 
-     */
-    public void propertyChange(PropertyChangeEvent evt)
+    if (returnVal == JFileChooser.APPROVE_OPTION)
     {
-      if (evt.getPropertyName().equals("progress"))
+      firmwareFile = chooser.getSelectedFile();
+      textFile.setText(firmwareFile.getName());
+
+      textFile.setToolTipText(firmwareFile.getParent());
+
+      System.out.println("You chose to open this file: "
+                         + firmwareFile.toString());
+      if (firmwareFile.length() > 200000)
       {
-        int progress = (Integer) evt.getNewValue();
-        progressBar.setIndeterminate(false);
-        progressBar.setValue(progress);
+        errorMessage("This file is likely not a Rogue Robotics firmware update file.",
+                     "Invalid File",
+                     null);
+        firmwareFile = null;
+        textFile.setText("");
+        textFile.setToolTipText("");
       }
     }
+  }//GEN-LAST:event_buttonBrowseActionPerformed
 
-    private void buttonRefreshActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_buttonRefreshActionPerformed
-    {//GEN-HEADEREND:event_buttonRefreshActionPerformed
-      try
-      {
-        populateComboSerial();
-      }
-      catch (Exception ignore)
-      {
-      }
-    }//GEN-LAST:event_buttonRefreshActionPerformed
+  private void buttonUploadActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_buttonUploadActionPerformed
+  {
+    //GEN-HEADEREND:event_buttonUploadActionPerformed
+    // Button pressed, load data from file, turn off buttons, then start uploader thread.
+    // Threaded method updates Progress bar, then turns buttons on after upload completed.
 
-    private String getRXTXLibraryLocation()
+    FileReader fr;
+    char data[];
+
+    buttonUpload.setEnabled(false);
+    progressBar.setValue(0);
+
+    if (firmwareFile == null)
     {
-      String osName = System.getProperty("os.name");
-      String osArch = System.getProperty("os.arch");
-      String location = "none";
+      errorMessage("Please select a firmware file.",
+                   "No firmware file selected",
+                   null);
+      buttonUpload.setEnabled(true);
+      return;
+    }
 
-      System.out.println("os.name='"+osName+"'");
-      System.out.println("os.arch='"+osArch+"'");
-        
-      // check for linux platform ..
-      if (osName.toLowerCase().contains("linux"))
-      {
-        // check for architecture 64bit
-        if (osArch.toLowerCase().contains("amd64") || osArch.toLowerCase().contains("x86_64"))
-        {
-          location = "lib/x86_64-unknown-linux-gnu/librxtxSerial.so";
-        } 
-        // else 32bit
-        else
-        {
-          location = "lib/i686-unknown-linux-gnu/librxtxSerial.so";
-        }
+    try
+    {
+      fr = new FileReader(firmwareFile);
+      data = new char[(int) firmwareFile.length()];
 
-      } 
-      // check for windows platform
-      else if (osName.toLowerCase().contains("windows"))
+      int charsRead = fr.read(data);
+
+      fr.close();
+
+      System.out.print("bytes read: ");
+      System.out.println(charsRead);
+    }
+    catch (IOException ex)
+    {
+      errorMessage("An error occurred while opening the file",
+                   "File Open Error",
+                   ex);
+      buttonUpload.setEnabled(true);
+      return;
+    }
+
+    fwData = new byte[data.length / 2];
+
+    // convert to binary
+    for (int i = 0; i < data.length; i += 2)
+    {
+      fwData[i / 2] = (byte)((Character.digit(data[i], 16) << 4)
+                             + Character.digit(data[i + 1], 16));
+    }
+
+    // got the data, let's upload
+    // need to make sure serial port is ready
+    // open the port now, send data, then close the port when done
+
+    // open the port
+    if (!openSerialPort())
+    {
+      buttonUpload.setEnabled(true);
+      return;
+    }
+
+    // We are good to upload now. Start the background task.
+
+    progressBar.setIndeterminate(true);
+    buttonBrowse.setEnabled(false);
+    buttonRefresh.setEnabled(false);
+    comboSerialPort.setEnabled(false);
+    //Instances of javax.swing.SwingWorker are not reusuable, so
+    //we create new instances as needed.
+    uploadTask = new UploadTask();
+    uploadTask.addPropertyChangeListener(this);
+    uploadTask.execute();
+  }//GEN-LAST:event_buttonUploadActionPerformed
+
+  /**
+   * Invoked when our task's 'progress' property changes.
+   * 'progress' property is inherited from
+   */
+  public void propertyChange(PropertyChangeEvent evt)
+  {
+    if (evt.getPropertyName().equals("progress"))
+    {
+      int progress = (Integer) evt.getNewValue();
+      progressBar.setIndeterminate(false);
+      progressBar.setValue(progress);
+    }
+  }
+
+  private void buttonRefreshActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_buttonRefreshActionPerformed
+  {
+    //GEN-HEADEREND:event_buttonRefreshActionPerformed
+    try
+    {
+      populateComboSerial();
+    }
+    catch (Exception ignore)
+    {
+    }
+  }//GEN-LAST:event_buttonRefreshActionPerformed
+
+  private String getRXTXLibraryLocation()
+  {
+    String osName = System.getProperty("os.name");
+    String osArch = System.getProperty("os.arch");
+    String location = "none";
+
+    System.out.println("os.name='" + osName + "'");
+    System.out.println("os.arch='" + osArch + "'");
+
+    // check for linux platform ..
+    if (osName.toLowerCase().contains("linux"))
+    {
+      // check for architecture 64bit
+      if (osArch.toLowerCase().contains("amd64") || osArch.toLowerCase().contains("x86_64"))
       {
-        // check for architecture 64bit
-        if (osArch.toLowerCase().contains("amd64") || osArch.toLowerCase().contains("x86_64"))
-        {
-          // 64bit libs from http://www.cloudhopper.com/opensource/rxtx/
-          location = "lib/win64/rxtxSerial.dll";
-        }
-        // else 32bit
-        else
-        {
-          location = "lib/win32/rxtxSerial.dll";
-        }
-        /*
-        osArch = System.getenv("PROCESSOR_ARCHITECTURE");
-        String wow64Arch = System.getenv("PROCESSOR_ARCHITEW6432");
-        String realArch = osArch.endsWith("64") ||
-                          wow64Arch != null && wow64Arch.endsWith("64") ? "64" : "32";
-        if (realArch.equals("64"))
-        {
-          // 64bit libs from http://www.cloudhopper.com/opensource/rxtx/
-          location = "lib/win64/rxtxSerial.dll";
-        }
-        // else 32bit
-        else
-        {
-          location = "lib/win32/rxtxSerial.dll";
-        }
-        */
-      } 
-      // check for os x platform
-      else if (osName.toLowerCase().contains("os x"))
-      {
-        // no arch available or required?!
-        location = "lib/mac-10.5/librxtxSerial.jnilib";
+        location = "lib/x86_64-unknown-linux-gnu/librxtxSerial.so";
       }
-      /*
-      // check for solaris platform
-      else if (osName.toLowerCase().contains("solaris"))
-      {
-        // check for architecture 64bit
-        if (osArch.toLowerCase().contains("amd64") || osArch.toLowerCase().contains("x86_64"))
-        {
-          location = "lib/sparc-sun-solaris2.10-64/librxtxSerial.so";
-        } 
-        // else 32bit
-        else
-        {
-          location = "lib/sparc-sun-solaris2.10-32/librxtxSerial.so";
-        }
-
-      }
-      */
-      // other platforms are currently not supported ...
+      // else 32bit
       else
       {
-        System.out.println("Sorry, platform '"+osName+"' currently not supported...");
+        location = "lib/i686-unknown-linux-gnu/librxtxSerial.so";
       }
-        
-      return location;
+
     }
-    
-    
-    private void formWindowOpened(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowOpened
-    {//GEN-HEADEREND:event_formWindowOpened
-      System.out.println("Started!");
-
-      // Maybe one day... we can load in our library on our own.
-      // Anyone have any more insight into this?
-
-      /*
-      File jarfile = new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath());
-      String jarpath = jarfile.getParentFile().getAbsolutePath();
-      
-      String libloc = jarpath + "/" + getRXTXLibraryLocation();
-      
-      System.out.println(libloc);
-      
-      System.out.println("Trying to load '"+libloc+"'...");
-      
-      try
+    // check for windows platform
+    else if (osName.toLowerCase().contains("windows"))
+    {
+      // check for architecture 64bit
+      if (osArch.toLowerCase().contains("amd64") || osArch.toLowerCase().contains("x86_64"))
       {
-        System.load(libloc);
+        // 64bit libs from http://www.cloudhopper.com/opensource/rxtx/
+        location = "lib/win64/rxtxSerial.dll";
       }
-      catch (Exception e)
+      // else 32bit
+      else
       {
-        errorMessage("Error loading Rxtx lib",
-                     "load error",
-                     e);
+        location = "lib/win32/rxtxSerial.dll";
+      }
+      /*
+      osArch = System.getenv("PROCESSOR_ARCHITECTURE");
+      String wow64Arch = System.getenv("PROCESSOR_ARCHITEW6432");
+      String realArch = osArch.endsWith("64") ||
+                        wow64Arch != null && wow64Arch.endsWith("64") ? "64" : "32";
+      if (realArch.equals("64"))
+      {
+        // 64bit libs from http://www.cloudhopper.com/opensource/rxtx/
+        location = "lib/win64/rxtxSerial.dll";
+      }
+      // else 32bit
+      else
+      {
+        location = "lib/win32/rxtxSerial.dll";
       }
       */
-      
-      try
+    }
+    // check for os x platform
+    else if (osName.toLowerCase().contains("os x"))
+    {
+      // no arch available or required?!
+      location = "lib/mac-10.5/librxtxSerial.jnilib";
+    }
+    /*
+    // check for solaris platform
+    else if (osName.toLowerCase().contains("solaris"))
+    {
+      // check for architecture 64bit
+      if (osArch.toLowerCase().contains("amd64") || osArch.toLowerCase().contains("x86_64"))
       {
-        //java.lang.System.load(null);
-        System.out.println(gnu.io.RXTXVersion.nativeGetVersion());
-        populateComboSerial();
+        location = "lib/sparc-sun-solaris2.10-64/librxtxSerial.so";
       }
-      catch (UnsatisfiedLinkError e)
+      // else 32bit
+      else
       {
-        String errmsg = "The RXTX Native Library was not found on your system.<br>"
+        location = "lib/sparc-sun-solaris2.10-32/librxtxSerial.so";
+      }
+
+    }
+    */
+    // other platforms are currently not supported ...
+    else
+    {
+      System.out.println("Sorry, platform '" + osName + "' currently not supported...");
+    }
+
+    return location;
+  }
+
+
+  private void formWindowOpened(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowOpened
+  {
+    //GEN-HEADEREND:event_formWindowOpened
+    System.out.println("Started!");
+
+    // Maybe one day... we can load in our library on our own.
+    // Anyone have any more insight into this?
+
+    /*
+    File jarfile = new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath());
+    String jarpath = jarfile.getParentFile().getAbsolutePath();
+
+    String libloc = jarpath + "/" + getRXTXLibraryLocation();
+
+    System.out.println(libloc);
+
+    System.out.println("Trying to load '"+libloc+"'...");
+
+    try
+    {
+      System.load(libloc);
+    }
+    catch (Exception e)
+    {
+      errorMessage("Error loading Rxtx lib",
+                   "load error",
+                   e);
+    }
+    */
+
+    try
+    {
+      //java.lang.System.load(null);
+      System.out.println(gnu.io.RXTXVersion.nativeGetVersion());
+      populateComboSerial();
+    }
+    catch (UnsatisfiedLinkError e)
+    {
+      String errmsg = "The RXTX Native Library was not found on your system.<br>"
                       + "Please go to <a href=\"http://rxtx.qbang.org/\">http://rxtx.qbang.org/</a><br>"
                       + "and install the latest binaries (RXTXcomm.jar and a native library for your system + architecture).";
 
-        if (System.getProperty("os.name").startsWith("Mac"))
-        {
-          errmsg += "<br><br>Please make sure that you install the library with Administrator privileges (sudo).";
-        }
-
-        errorMessage(errmsg,
-                     "Missing RXTX Library",
-                     e);
-        buttonUpload.setEnabled(false);
-        buttonRefresh.setEnabled(false);
-        buttonBrowse.setEnabled(false);
+      if (System.getProperty("os.name").startsWith("Mac"))
+      {
+        errmsg += "<br><br>Please make sure that you install the library with Administrator privileges (sudo).";
       }
-    }//GEN-LAST:event_formWindowOpened
+
+      errorMessage(errmsg,
+                   "Missing RXTX Library",
+                   e);
+      buttonUpload.setEnabled(false);
+      buttonRefresh.setEnabled(false);
+      buttonBrowse.setEnabled(false);
+    }
+  }//GEN-LAST:event_formWindowOpened
 
   private void textFileMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_textFileMouseClicked
-  {//GEN-HEADEREND:event_textFileMouseClicked
+  {
+    //GEN-HEADEREND:event_textFileMouseClicked
     if (buttonBrowse.isEnabled())
     {
       buttonBrowseActionPerformed(null);
@@ -673,7 +679,7 @@ public class RogueUpdaterUI extends javax.swing.JFrame
     while (portList.hasMoreElements())
     {
       CommPortIdentifier pId =
-              (CommPortIdentifier) portList.nextElement();
+        (CommPortIdentifier) portList.nextElement();
       //System.out.println(portId);
 
       if (pId.getPortType() == CommPortIdentifier.PORT_SERIAL)
@@ -718,7 +724,7 @@ public class RogueUpdaterUI extends javax.swing.JFrame
       try
       {
         portId = CommPortIdentifier.getPortIdentifier(
-                (String) comboSerialPort.getSelectedItem());
+                   (String) comboSerialPort.getSelectedItem());
       }
       catch (Exception ex)
       {
@@ -789,7 +795,7 @@ public class RogueUpdaterUI extends javax.swing.JFrame
       }
     });
   }
-  
+
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JLabel LabelFile;
   private javax.swing.JButton buttonBrowse;
